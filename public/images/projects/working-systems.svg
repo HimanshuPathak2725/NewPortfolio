@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="project-world" viewBox="20 70 560 570" role="img" aria-labelledby="working-world-title working-world-desc">
+<title id="working-world-title">A world of working systems</title>
+<desc id="working-world-desc">An original architectural illustration of one floating island. A workshop and looping test track evoke execution-based learning; an observatory evokes security assessment; a translucent gateway evokes packet filtering; and a river of transaction lights passes an observation station. Their connections are artistic metaphors, not shared project infrastructure.</desc>
+<defs>
+  <linearGradient id="pw-earth" x2=".8" y2="1"><stop stop-color="#ded3b5"/><stop offset="1" stop-color="#a7bdb2"/></linearGradient>
+  <linearGradient id="pw-cliff" x2=".5" y2="1"><stop stop-color="#8eaaa3"/><stop offset="1" stop-color="#cdd9cc" stop-opacity=".1"/></linearGradient>
+  <linearGradient id="pw-glass" x2="1" y2="1"><stop stop-color="#8bbfc6" stop-opacity=".15"/><stop offset=".55" stop-color="#79aaa9" stop-opacity=".55"/><stop offset="1" stop-color="#667bb4" stop-opacity=".15"/></linearGradient>
+  <linearGradient id="pw-dome" x2="1" y2=".7"><stop stop-color="#a3b4cf"/><stop offset=".55" stop-color="#596f97"/><stop offset="1" stop-color="#3f526f"/></linearGradient>
+  <linearGradient id="pw-water" x2=".6" y2="1"><stop stop-color="#668bb4"/><stop offset=".5" stop-color="#529eaa"/><stop offset="1" stop-color="#9bbec0"/></linearGradient>
+  <radialGradient id="pw-halo"><stop stop-color="#e5c677" stop-opacity=".2"/><stop offset="1" stop-color="#e5c677" stop-opacity="0"/></radialGradient>
+  <pattern id="pw-hatching" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(28)"><path d="M0 0V7" stroke="#536e76" stroke-width=".7" opacity=".3"/></pattern>
+  <symbol id="pw-tree" viewBox="0 0 30 58"><path d="M15 34v23m0-15-8-8m8 3 7-10" fill="none" stroke="#496b61" stroke-width="1.3"/><path d="M15 1C5 12 2 23 4 33C8 43 22 45 26 32C29 21 23 8 15 1Z" fill="#699584" stroke="#456f61" stroke-width="1"/><path d="M15 7C11 22 11 31 15 39" fill="none" stroke="#c0cfaa" stroke-width="1.1"/></symbol>
+  <symbol id="pw-bush" viewBox="0 0 30 20"><path d="M2 18C-4 7 6 3 11 9C10-2 26 0 25 10C33 8 33 20 23 20Z" fill="#8ba58a"/><path d="m7 18 2-8m8 9-1-11m8 11-1-7" stroke="#527c6c" stroke-width=".8"/></symbol>
+  <symbol id="pw-grass" viewBox="0 0 16 12"><path d="m2 11 2-6 3 6 2-10 3 10 2-5" fill="none" stroke="#729285" stroke-width="1" stroke-linecap="round"/></symbol>
+</defs>
+<style>
+.project-world .pw-line{fill:none;stroke:#53646b;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.project-world .pw-fine{fill:none;stroke:#53646b;stroke-width:.7;stroke-linecap:round;stroke-linejoin:round}
+.project-world .pw-label{fill:#65716e;font:italic 15px Georgia,serif;letter-spacing:.25px}
+.project-world .pw-gold{fill:none;stroke:#b68b43;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.project-world .pw-river-light{fill:none;stroke:#f7df9f;stroke-width:3;stroke-linecap:round;stroke-dasharray:1 42}
+</style>
+<!-- Quiet celestial marks frame one continuous landscape. -->
+<ellipse cx="311" cy="306" rx="280" ry="247" fill="url(#pw-halo)"/>
+<g class="pw-fine" opacity=".35"><path d="M67 184Q264 33 486 161" stroke-dasharray="2 8"/><path d="M63 179l4 9 8-6M482 155l5 7 6-7"/><circle cx="275" cy="96" r="4"/><path d="m127 164 11-5 10 4m-6-2 8-5 9 3M444 101h10m-5-5v10M188 96h7m-3-4v8"/></g>
+<path d="M47 227q11-10 20-1q9-20 23-3q19-5 26 5m361-28q16-16 29-4q13-23 25-3q19-4 25 7" class="pw-fine" opacity=".4"/>
+<!-- The suspended rock: faceted geology under the garden. -->
+<path d="M59 384L128 350L256 303L434 332L545 386L532 434L481 474L430 498L394 548L327 590L268 564L240 544L176 528L145 486L101 461L67 433Z" fill="url(#pw-cliff)"/>
+<path d="M59 384L161 425L176 528L145 486L101 461L67 433Z" fill="#678b87" opacity=".5"/>
+<path d="M161 425L279 472L268 564L240 544L176 528Z" fill="#89a6a2" opacity=".45"/>
+<path d="M279 472L370 499L327 590L268 564Z" fill="#627f87" opacity=".3"/>
+<path d="M370 499L463 447L430 498L394 548L327 590Z" fill="#a4baac" opacity=".6"/>
+<path d="M463 447L545 386L532 434L481 474L430 498Z" fill="#557b80" opacity=".25"/>
+<g class="pw-fine" opacity=".42"><path d="m81 411 19 38 18 8m-5-41 20 38 5 30m50-47 13 45 27 25m33-48-4 53 20 24m55-37-10 43-1 30m71-56-21 48m64-76-29 46m83-86-23 41m-274 13 18 10m-32-47 21 8"/></g>
+<!-- Garden contours and paths keep the buildings on the same ground. -->
+<path d="M55 375L113 335L167 321L230 283L297 270L356 245L416 269L453 310L518 339L549 375L530 402L466 442L405 461L361 494L295 481L241 461L182 445L143 417L91 403Z" fill="url(#pw-earth)" stroke="#647e77" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M68 376L120 344L174 333L239 294L300 282L355 257L406 280L445 319L510 350L536 376L520 393L460 431L398 450L359 482L299 470L247 450L187 433L149 407L94 393Z" fill="#eee4c9" stroke="#a8b39c" stroke-width=".8"/>
+<path d="M277 299C305 261 346 234 373 244C417 251 443 286 438 320L385 346L316 337Z" fill="#b8c5a4"/>
+<path d="M290 301C325 272 350 261 378 269C406 277 421 294 422 313M305 310C334 288 354 282 375 287C398 293 405 307 407 316" class="pw-fine" opacity=".5"/>
+<path d="M220 360Q291 342 341 303M242 400Q278 420 323 420M164 386Q113 389 104 374M372 367Q430 341 467 365" fill="none" stroke="#ceba8f" stroke-width="15" stroke-linecap="round"/>
+<path d="M220 360Q291 342 341 303M242 400Q278 420 323 420M164 386Q113 389 104 374M372 367Q430 341 467 365" fill="none" stroke="#f7ecd1" stroke-width="10" stroke-linecap="round"/>
+<!-- A river becomes a stream of transactions; it winds through the island. -->
+<path d="M390 307C355 335 344 339 377 355C420 375 388 397 357 407C318 420 327 443 359 454C389 465 370 483 343 489L339 526L353 529L359 501C409 483 408 458 376 444C353 434 344 429 376 417C427 397 439 371 398 348C382 339 386 329 405 317Z" fill="url(#pw-water)"/>
+<path d="M397 314C367 337 365 344 390 356C430 377 398 403 367 413C331 426 342 438 368 448C399 461 389 487 350 495" class="pw-fine" stroke-opacity=".35"/>
+<path class="pw-river-light" d="M397 314C367 337 365 344 390 356C430 377 398 403 367 413C331 426 342 438 368 448C399 461 389 487 350 495"/>
+<path d="M344 498L342 544M350 503L347 556M355 506L351 538" fill="none" stroke="#8db3b6" stroke-width="2" opacity=".5"/>
+<!-- Observatory on the hill: masonry, brass instruments and a slit dome. -->
+<ellipse cx="368" cy="298" rx="47" ry="23" fill="#798b78" opacity=".2"/>
+<path d="M330 231L400 231L400 282Q367 310 330 282Z" fill="#c8c4b2" stroke="#53646b" stroke-width="1.2"/>
+<path d="M366 233L400 231L400 282Q385 294 366 296Z" fill="#a0aaa3"/>
+<ellipse cx="365" cy="231" rx="35" ry="17" fill="#ddd4b8" stroke="#53646b" stroke-width="1.2"/>
+<path d="M326 226C326 162 401 160 405 226Q365 251 326 226Z" fill="url(#pw-dome)" stroke="#4e6178" stroke-width="1.5"/>
+<path d="M343 233C337 192 350 178 364 178M384 236C391 204 383 182 369 177" fill="none" stroke="#c4d0d6" stroke-width="1" opacity=".6"/>
+<path d="M360 178Q351 203 357 243L370 243Q366 209 374 179Z" fill="#37475d" stroke="#a8b9c5" stroke-width=".8"/>
+<g transform="translate(365 205)"><g class="pw-telescope"><path d="M0 0L41-33L50-23L8 12Z" fill="#c6a35f" stroke="#725f44" stroke-width="1.2"/><path d="M33-28L44-17M37-31L48-21" class="pw-fine"/><ellipse cx="47" cy="-29" rx="6" ry="8" transform="rotate(-42 47 -29)" fill="#59758b" stroke="#dbbd79" stroke-width="2"/></g></g>
+<path d="M326 228Q365 253 405 228M329 235Q365 260 401 236" class="pw-fine"/>
+<path d="M340 253v20l8 3v-20Z" fill="#607786" stroke="#53646b" stroke-width=".9"/><path d="M379 256v20l9-4v-21Z" fill="#607786" stroke="#53646b" stroke-width=".9"/>
+<path d="M357 292v-22q7-11 14-1v24" fill="#5c7572" stroke="#53646b" stroke-width="1"/>
+<g class="pw-fine" opacity=".5"><path d="M332 248l23 9m-22 3 22 9m33-23 11-5m-11 19 11-5M351 252v12m-14 9v10m52-22v10"/></g>
+<path d="m357 297-7 5 15 5 11-8m-26 3-8 5 15 5 8-5" fill="#d2c9af" stroke="#71867b" stroke-width=".8"/>
+<path d="M365 176v-18m-4 7h8" class="pw-gold"/><circle cx="365" cy="156" r="3" fill="#cfac60"/>
+<!-- Cypress trees, rocks and scrub bind the hill to the workshop. -->
+<use href="#pw-tree" x="285" y="252" width="24" height="47"/><use href="#pw-tree" x="305" y="237" width="20" height="41"/>
+<use href="#pw-tree" x="411" y="264" width="23" height="47"/><use href="#pw-bush" x="423" y="299" width="31" height="20"/>
+<!-- Workshop: a small open drafting hall, rather than a software icon. -->
+<ellipse cx="191" cy="377" rx="88" ry="39" fill="#8b927a" opacity=".18"/>
+<path d="M121 294L194 255L273 299L199 342Z" fill="#e7d6b1" stroke="#5b6c6d" stroke-width="1.5"/>
+<path d="M121 294L199 337L199 401L121 357Z" fill="#ddcbaa" stroke="#5b6c6d" stroke-width="1.2"/>
+<path d="M199 337L273 294L273 359L199 401Z" fill="#a3b3ac" stroke="#5b6c6d" stroke-width="1.2"/>
+<path d="M113 292L155 244L194 222L236 269L281 294L199 342Z" fill="#849caa" stroke="#4d656e" stroke-width="1.4"/>
+<path d="M113 292L155 244L236 289L199 342Z" fill="#5c788a"/>
+<path d="M155 244L194 222L236 269L281 294L236 289Z" fill="#bbc7c0"/>
+<g class="pw-fine" opacity=".65"><path d="M127 285l72 41m-62-53 72 41m-62-53 72 41m-38-68 40 44m-29-51 41 44m-77-32 82 45"/></g>
+<path d="M173 265L194 254L218 268L196 279Z" fill="#f5e7bb" stroke="#5c7277" stroke-width="1"/><path d="M183 260l23 14m-18 1 21-12" class="pw-fine"/>
+<path d="M135 316L152 325L152 345L135 336Z" fill="#526e7b" stroke="#f1e0b6" stroke-width="2"/><path d="M161 331L179 341L179 359L161 349Z" fill="#526e7b" stroke="#f1e0b6" stroke-width="2"/>
+<path d="M143 321v20m-8-14 17 9m18-1v19m-9-14 18 9" stroke="#c7bf9e" stroke-width=".8"/>
+<path d="M211 341L260 313L260 363L211 391Z" fill="#425e65"/>
+<path d="M213 366L240 350L255 359L228 375Z" fill="#d5b983" stroke="#65716b" stroke-width="1"/>
+<path d="M219 369v12m31-19v12" class="pw-gold"/>
+<path d="M225 356L236 350L245 355L234 362Z" fill="#f3e7c8"/>
+<path d="M220 340l12-7m-12 13 24-14m-24 20 17-10" stroke="#94bcb0" stroke-width="1.4"/>
+<path d="M219 382l20-12" stroke="#dcb961" stroke-width="2"/>
+<path d="M137 247v-27l13-7 11 6v30l-11 7Z" fill="#b8b5a3" stroke="#5b6c6d" stroke-width="1"/><path d="m137 220 13 7 11-8m-11 8v29" class="pw-fine"/>
+<path d="M204 403l65-37 9 5-65 38Z" fill="#d7cdb1" stroke="#76857b" stroke-width=".8"/>
+<!-- A looping test track surrounds the workshop; one revision returns. -->
+<path d="M111 365C58 385 109 409 171 428C231 447 292 410 283 385C280 375 272 374 265 377" fill="none" stroke="#b6a47b" stroke-width="8"/>
+<path d="M111 365C58 385 109 409 171 428C231 447 292 410 283 385C280 375 272 374 265 377" fill="none" stroke="#f9ebc6" stroke-width="4"/>
+<path d="M111 365C58 385 109 409 171 428C231 447 292 410 283 385C280 375 272 374 265 377" class="pw-work-light" fill="none" stroke="#bf7968" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 56"/>
+<g transform="translate(144 420)"><path d="M-11-10L5-18L20-10L4-2Z" fill="#e2ba69" stroke="#7b775f" stroke-width="1"/><path d="M-11-10v12L4 10L20 1v-11L4-2Z" fill="#8eaaa1" stroke="#647b74" stroke-width="1"/><path d="m-5-6 8 5 11-6" fill="none" stroke="#f8e7b4"/><path d="m-2 0 4 4 6-8" fill="none" stroke="#436d5e" stroke-width="1.3"/></g>
+<!-- Translucent filtering gateway, integrated into the eastern path. -->
+<path d="M455 324L488 304L488 399L455 419Z" fill="url(#pw-glass)" stroke="#698e9d" stroke-width="1.3"/>
+<path d="M472 333L505 313L505 408L472 428Z" fill="url(#pw-glass)" stroke="#698e9d" stroke-width="1.3"/>
+<path d="M455 324L472 333L505 313L488 304Z" fill="#b0cbcb" fill-opacity=".45" stroke="#698e9d" stroke-width="1"/>
+<path d="M455 419L472 428L505 408L488 399Z" fill="#adb8ac" stroke="#6a8d89" stroke-width="1"/>
+<g stroke="#dce9df" stroke-width="1" opacity=".75"><path d="m459 348 25-15m-25 25 25-15m-8 51 25-15m-25 25 25-15M460 332v62M478 343v56"/></g>
+<path d="M528 342L508 354M534 360L508 375M527 383L508 394" fill="none" stroke="#729a93" stroke-width="1.3" stroke-dasharray="3 5"/>
+<path d="M487 366L442 392M487 387L450 409" fill="none" stroke="#74a993" stroke-width="1.8" stroke-dasharray="2 8"/>
+<g class="ri-pulse"><circle cx="519" cy="348" r="3" fill="#c9a04e"/><circle cx="524" cy="366" r="3" fill="#c57364"/><circle cx="517" cy="389" r="3" fill="#759db7"/></g>
+<path d="m511 366 7 7m0-7-7 7" stroke="#b96e64" stroke-width="1.3"/>
+<!-- A small measuring station watches the transaction river. -->
+<path d="M284 448L313 431L336 444L307 461Z" fill="#e3d4ae" stroke="#6c8179" stroke-width="1"/>
+<path d="M292 444v-33l24-14 13 8v34" fill="#a7bdb4" stroke="#647d78" stroke-width="1.2"/>
+<path d="M287 410L316 392L334 403L305 420Z" fill="#526e84" stroke="#516975" stroke-width="1.2"/>
+<path d="M298 421l18-10v19l-18 10Z" fill="#f2dfab" stroke="#6c8179" stroke-width=".8"/>
+<path d="m301 432 3-6 4 1 4-8" class="pw-fine"/>
+<path d="M323 430L345 415L355 421" class="pw-gold"/>
+<circle cx="355" cy="422" r="8" fill="none" stroke="#b78243" stroke-width="1.5"/>
+<circle cx="355" cy="422" r="3" fill="#c77461" class="ri-pulse ri-delay"/>
+<path d="M351 409L365 398" stroke="#c17b62" stroke-width="1" stroke-dasharray="2 3"/>
+<!-- Botanical and survey details. -->
+<use href="#pw-tree" x="88" y="307" width="25" height="48"/><use href="#pw-tree" x="65" y="331" width="20" height="39"/>
+<use href="#pw-tree" x="252" y="423" width="25" height="48"/><use href="#pw-bush" x="221" y="449" width="35" height="23"/>
+<use href="#pw-bush" x="412" y="414" width="30" height="20"/>
+<use href="#pw-grass" x="117" y="347" width="15" height="12"/><use href="#pw-grass" x="270" y="333" width="17" height="12"/><use href="#pw-grass" x="283" y="353" width="12" height="12"/><use href="#pw-grass" x="302" y="325" width="13" height="12"/><use href="#pw-grass" x="441" y="321" width="12" height="12"/><use href="#pw-grass" x="498" y="350" width="13" height="12"/><use href="#pw-grass" x="197" y="445" width="15" height="12"/><use href="#pw-grass" x="289" y="455" width="18" height="12"/><use href="#pw-grass" x="388" y="441" width="13" height="12"/><use href="#pw-grass" x="433" y="429" width="16" height="12"/><use href="#pw-grass" x="93" y="393" width="14" height="12"/>
+<g fill="#adbaa3" stroke="#778d80" stroke-width=".7"><path d="m433 451 9-6 10 3-5 7Z"/><path d="m285 307 8-5 7 4-7 5Z"/><path d="m119 407 9-2 7 5-10 3Z"/></g>
+<g class="pw-gold" opacity=".8"><path d="M79 508v35m-15-18h30m-22-9 14 20m-18-4 22-12"/><circle cx="79" cy="525" r="13"/></g>
+<text x="72" y="561" class="pw-label" style="font-size:12px">N</text>
+<path d="M130 562Q212 607 290 610M391 582Q460 552 492 514" class="pw-fine" opacity=".3" stroke-dasharray="1 7"/>
+<text x="302" y="625" text-anchor="middle" class="pw-label">a small geography of experiments</text>
+</svg>

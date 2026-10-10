@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import About from '../components/About.astro';
+import Divider from '../components/Divider.astro';
+import Posts from '../components/Posts.astro';
+import Projects from '../components/Projects.astro';
+import Models from '../components/Models.astro';
+import ReadingList from '../components/ReadingList.astro';
+import { Image } from 'astro:assets';
+import policyMaze from '../assets/rl-policy-maze.png';
+---
+<BaseLayout>
+  <About />
+  <div class="reading-column">
+    <Divider />
+  </div>
+  <div class="posts-layout">
+    <Posts preview />
+    <figure class="posts-illustration">
+      <Image
+        src={policyMaze}
+        alt="An illustrated rover explores an isometric maze, with dotted trial paths and a green route toward a golden reward."
+        widths={[320, 640, 960]}
+        sizes="(max-width: 400px) calc(100vw - 3rem), (max-width: 760px) 320px, (max-width: 1143px) 28vw, 320px"
+        format="webp"
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>Learning a policy, one interaction at a time.</figcaption>
+    </figure>
+  </div>
+  <div class="reading-column">
+    <Divider />
+  </div>
+  <Projects preview />
+  <div class="reading-column">
+    <Divider />
+  </div>
+  <Models />
+  <div class="reading-column">
+    <Divider />
+    <ReadingList preview />
+  </div>
+</BaseLayout>
+
+<style>
+  .posts-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(240px, 28vw, 320px);
+    align-items: start;
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+  .posts-illustration { margin: 12rem 0 0; }
+  .posts-illustration img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+  }
+  .posts-illustration figcaption {
+    margin-top: 1rem;
+    color: var(--muted);
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  @media (max-width: 760px) {
+    .posts-layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .posts-illustration { width: min(320px, 100%); justify-self: end; margin: 0; }
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import { labs, labViews, type LabKind } from '../../data/world-models';
+interface Props { kind: LabKind; }
+const {kind} = Astro.props;
+const lab = labs[kind];
+---
+<figure class="wm-lab" id={`experiment-${kind}`} data-scientific-lab={kind}>
+  <header class="wm-lab-header">
+    <span class="wm-eyebrow">Experiment {lab.number}</span>
+    <h3>{lab.title}</h3>
+    <p>{lab.question}</p>
+  </header>
+  <div class="wm-lab-stage">
+    <img class="wm-lab-fallback" src={`/images/world-models/lab-${kind}.svg`} width="900" height="480" loading="lazy" alt={lab.description} />
+    <canvas hidden class="wm-lab-canvas" width="900" height="480" role="img" aria-label={lab.description}></canvas>
+  </div>
+  <div class="wm-lab-ui" hidden>
+    <div class="wm-scenarios"><span>Compare</span><div role="group" aria-label="Experiment comparisons">{labViews[kind].presets.map((preset,index)=><button type="button" data-preset={index} aria-pressed="false">{preset.label}</button>)}</div></div>
+    <dl class="wm-readouts" aria-label="Computed experiment measurements"></dl>
+    <div class="wm-parameters">
+      {lab.parameters.map((parameter) => <label>
+        <span>{parameter.label}<output data-knob-output={parameter.name}>{parameter.value} {parameter.unit}</output></span>
+        <input type="range" data-parameter={parameter.name} data-unit={parameter.unit} min={parameter.min} max={parameter.max} step={parameter.step} value={parameter.value} aria-label={parameter.label} />
+      </label>)}
+      {kind === 'belief' && <label class="wm-switch"><input type="checkbox" data-toggle="history" /><span>Reveal the previous observation</span></label>}
+      {kind === 'planning' && <label class="wm-switch"><input type="checkbox" data-toggle="obstacle" checked /><span>The model knows about the obstacle</span></label>}
+      {kind === 'uncertainty' && <label class="wm-switch"><input type="checkbox" data-toggle="correction" /><span>Re-observe the true state every 8 steps</span></label>}
+    </div>
+    <div class="wm-stages" role="group" aria-label="Jump to an experiment stage">{labViews[kind].stages.map(stage=><button type="button" data-stage={stage.at}><span aria-hidden="true"/>{stage.label}</button>)}</div>
+    <div class="wm-transport">
+      <button type="button" data-play class="wm-play">{kind === 'learning' ? 'Train model' : kind === 'planning' ? 'Optimize actions' : 'Play'}</button>
+      <button type="button" data-step>Step</button>
+      <button type="button" data-reset>Reset</button>
+      <label class="wm-scrubber"><span class="sr-only">Experiment timeline</span><input data-timeline type="range" min="0" max="1" step="0.005" value="0" aria-label="Experiment timeline" /></label>
+      <output class="wm-time" data-time>0%</output>
+    </div>
+    <p class="wm-motion-hint" hidden>Reduced motion is enabled. Scrub the timeline or use Step to inspect each state.</p>
+    <output class="wm-lab-status" aria-live="polite" data-status></output>
+  </div>
+  <figcaption>{lab.caption} <a href={`/images/world-models/lab-${kind}.svg`}>Full-size figure ↗</a></figcaption>
+</figure>

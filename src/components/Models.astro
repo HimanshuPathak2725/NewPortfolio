@@ -1,0 +1,60 @@
+---
+import { researchArtifacts } from '../data/research-artifacts';
+import ResearchIllustration from './ResearchIllustration.astro';
+---
+<section id="models" aria-labelledby="models-title">
+  <div class="section-heading">
+    <h2 id="models-title">Models &amp; Datasets</h2>
+    <a href="https://huggingface.co/HimanshuPathak">Hugging Face →</a>
+  </div>
+  <ul class="entry-list">
+    {researchArtifacts.map((artifact) => (
+      <li class:list={['artifact-entry', { 'with-illustration': artifact.illustration }]}>
+        <div class="artifact-copy">
+        <a class="entry-title" href={artifact.href}>{artifact.title}</a>
+        <span class="entry-meta">{artifact.kind}</span>
+        <p class="entry-description">{artifact.description}</p>
+        {artifact.note && <p class="entry-meta">{artifact.note}</p>}
+        {artifact.related && (
+          <ul class="artifact-links" aria-label={`${artifact.title} resources`}>
+            {artifact.related.map((link) => <li><a href={link.href}>{link.label} ↗</a></li>)}
+          </ul>
+        )}
+        </div>
+        {artifact.illustration && <ResearchIllustration kind={artifact.illustration} />}
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .section-heading { max-width: 760px; }
+  .artifact-entry { max-width: 760px; }
+  .artifact-entry.with-illustration {
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(260px, 30vw, 350px);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+  .artifact-entry + .artifact-entry { margin-top: 3.5rem; }
+  .with-illustration:nth-child(even) { grid-template-columns: clamp(260px, 30vw, 350px) minmax(0, 1fr); }
+  .with-illustration:nth-child(even) .artifact-copy { grid-column: 2; grid-row: 1; }
+  .with-illustration:nth-child(even) :global(.research-illustration) { grid-column: 1; grid-row: 1; }
+  @media (max-width: 760px) {
+    .artifact-entry.with-illustration { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+    .with-illustration:nth-child(even) .artifact-copy,
+    .with-illustration:nth-child(even) :global(.research-illustration) { grid-column: auto; grid-row: auto; }
+    .with-illustration :global(.research-illustration) { justify-self: center; }
+  }
+  .artifact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 1rem;
+  }
+  .artifact-links a { overflow-wrap: anywhere; }
+</style>

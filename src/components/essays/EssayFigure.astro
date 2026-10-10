@@ -1,0 +1,25 @@
+---
+import { figures, renderFigure, stageDescription, type FigureId } from '../../lib/essays/figures';
+interface Props { id: FigureId; number: number; }
+const { id, number } = Astro.props;
+const figure = figures[id];
+const timeline = 'timeline' in figure ? figure.timeline : {label:'Episode',steps:300};
+const initial = 'initialProgress' in figure ? figure.initialProgress : 1;
+const presets = 'presets' in figure ? figure.presets : [];
+---
+<figure class="essay-figure" data-essay-figure={id} aria-labelledby={`${id}-heading`}>
+  <header class="essay-figure-heading"><span>Figure {number.toString().padStart(2,'0')}</span><h3 id={`${id}-heading`}>{figure.title}</h3></header>
+  <div class="essay-drawing essay-drawing-wide" set:html={renderFigure(id,initial)} />
+  <div class="essay-drawing essay-drawing-small" set:html={renderFigure(id,initial,true)} />
+  {presets.length>0 && <div class="essay-choices" role="group" aria-label={`Compare conditions: ${figure.title}`} hidden>
+    {presets.map(preset=><button type="button" data-frame={preset.progress} aria-pressed={preset.progress===initial}>{preset.label}</button>)}
+  </div>}
+  <div class="essay-playback" hidden>
+    <button type="button" data-play aria-label={`Play animation: ${figure.title}`}>Play</button>
+    <button type="button" data-next aria-label={`Next stage: ${figure.title}`}>Next stage</button>
+    <button type="button" data-reset>Show complete figure</button>
+    <span data-position>{'comparison' in figure ? `${timeline.label} ${timeline.steps} / ${timeline.steps}` : `${Math.floor(initial*4)+1} / 5`}</span>
+  </div>
+  <p class="essay-stage" data-stage hidden aria-live="off">{stageDescription(id,initial)}</p>
+  <figcaption>{figure.caption} <a href={`/images/essays/${id}.svg`} download>Download SVG ↗</a></figcaption>
+</figure>

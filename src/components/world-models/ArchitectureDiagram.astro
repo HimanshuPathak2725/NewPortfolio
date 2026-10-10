@@ -1,0 +1,29 @@
+---
+import {architectureDiagrams,type ArchitectureId} from '../../lib/world-models/architecture-diagrams';
+import {architectureScenes} from '../../lib/world-models/architecture-scenes';
+import {renderArchitectureScene} from '../../lib/world-models/architecture-art';
+interface Props {kind:ArchitectureId;}
+const {kind}=Astro.props;
+const diagram=architectureDiagrams[kind];
+---
+<figure class="wm-architecture-figure" data-architecture-diagram={kind}>
+  <div class="wm-architecture-key" aria-label="Diagram color key"><span>Observation / memory</span><span>Latents / predictions</span><span>Actions / behavior</span><span>Learning objective</span></div>
+  <div class="wm-architecture-line-key" aria-label="Connection styles"><span>Forward computation</span><span>Recurrence</span><span>Supervision</span><span>Parameter update</span></div>
+  {architectureScenes[kind].map((scene,index)=><section class="wm-architecture-scene" data-architecture-scene={scene.id} data-steps={JSON.stringify(scene.steps)} data-intro={scene.intro} aria-labelledby={`scene-${scene.id}-heading`}>
+    <div class="wm-architecture-heading"><span aria-hidden="true">{String.fromCharCode(97+index)}.</span><h4 id={`scene-${scene.id}-heading`}>{scene.title}</h4></div>
+    <div class="wm-architecture-controls" hidden>
+      <button type="button" data-arch-play aria-label={`Trace ${scene.title}`}>Trace computation ▶</button>
+      <button type="button" data-arch-next aria-label={`Next step in ${scene.title}`}>Next step →</button>
+      <button type="button" data-arch-all>Show all</button>
+      <span data-arch-count aria-hidden="true">Complete figure</span>
+    </div>
+    <p class="wm-architecture-explanation" data-arch-explanation>{scene.intro}</p>
+    <div class="wm-architecture-wide" set:html={renderArchitectureScene(scene)}/>
+    <div class="wm-architecture-narrow" set:html={renderArchitectureScene(scene,true)}/>
+    {scene.equation&&<p class="wm-architecture-equation">{scene.equation}</p>}
+    <p class="wm-architecture-footnote">{scene.footnote}</p>
+  </section>)}
+  <figcaption>Original explanatory diagrams. Scenes, tensor grids, and candidate curves are schematic. <a href={`/images/world-models/architecture-${kind}.svg`}>Open complete SVG ↗</a></figcaption>
+  <p class="wm-diagram-sources"><span>Diagram sources:</span> {diagram.sources.map(source=><a href={source.url}>{source.title}</a>)}</p>
+</figure>
+<p class="wm-architecture-change">{diagram.change}</p>

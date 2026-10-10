@@ -1,0 +1,44 @@
+---
+import { projects } from '../data/portfolio';
+import ResearchIllustration from './ResearchIllustration.astro';
+interface Props { preview?: boolean; }
+const { preview = false } = Astro.props;
+const visibleProjects = preview ? projects.filter(project => project.featured) : projects;
+---
+<section id="projects" aria-labelledby="projects-title">
+  {preview && <div class="section-heading"><h2 id="projects-title">Projects &amp; Open Source</h2><a href="/projects/">All projects →</a></div>}
+  <div class="projects-content">
+    <div>
+  <ul class="entry-list">
+    {visibleProjects.map((project) => (
+      <li>
+        <a class="entry-title" href={project.href}>{project.title}</a>
+        <p class="entry-description">{project.description}</p>
+        {project.meta && <p class="entry-meta">{project.meta}</p>}
+        {project.upstream && <p class="entry-meta">Fork of <a href={project.upstream.href}>{project.upstream.label}</a>.</p>}
+      </li>
+    ))}
+  </ul>
+  <p class="section-note">More code and experiments on <a href="https://github.com/HimanshuPathak2725?tab=repositories">GitHub</a>.</p>
+    </div>
+    <div class="project-world-placement">
+      <ResearchIllustration kind="world" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-heading { max-width: 760px; }
+  .projects-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(300px, 37vw, 440px);
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+  .project-world-placement { position: sticky; top: 3rem; padding-top: 2rem; }
+  @media (max-width: 760px) {
+    .projects-content { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .project-world-placement { position: static; padding-top: 0; justify-self: center; width: min(100%, 440px); }
+  }
+  @media print { .project-world-placement { position: static; } }
+</style>

@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+interface Props { preview?: boolean; }
+const { preview = false } = Astro.props;
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const visiblePosts = preview ? posts.slice(0, 5) : posts;
+const formatDate = (date: Date) => date.toLocaleDateString('en-US', {
+  month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC',
+});
+---
+<section id="posts" aria-labelledby="posts-title">
+  {preview && <div class="section-heading"><h2 id="posts-title">Posts</h2><a href="/posts/">All posts →</a></div>}
+  {visiblePosts.length > 0 ? (
+    <ul class="entry-list">
+      {visiblePosts.map((post) => (
+        <li class="dated-entry">
+          <time class="entry-date" datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+          <div>
+            <a class="entry-title" href={`/posts/${post.id}/`}>{post.data.title}</a>
+            <p class="entry-description">{post.data.description}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="empty-note">No posts published yet. Notes on reinforcement learning and experiments will live here.</p>
+  )}
+</section>

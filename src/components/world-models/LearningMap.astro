@@ -1,0 +1,39 @@
+---
+const stages = [
+ {title:'Learn the language',note:'Probability · linear algebra · gradients',chapter:'foundations'},
+ {title:'Specify the decision',note:'MDPs · POMDPs · rewards · Bellman equations',chapter:'hidden-state'},
+ {title:'Identify the dynamics',note:'State estimation · system identification · Dyna',chapter:'learn-dynamics'},
+ {title:'Choose a representation',note:'Latent states · RSSMs · recurrent memory',chapter:'latent-imagination'},
+];
+const branches=[
+ {title:'Plan in task space',note:'MuZero · TD-MPC2',chapter:'planning'},
+ {title:'Model a sequence',note:'IRIS · Transformers',chapter:'architecture-atlas'},
+ {title:'Predict features',note:'JEPA · V-JEPA',chapter:'architecture-atlas'},
+ {title:'Generate environments',note:'Genie · video models',chapter:'architecture-atlas'},
+];
+---
+<div class="wm-learning-map" aria-label="A learning path with four architecture branches">
+  <span class="wm-eyebrow">The conceptual map</span>
+  <ol class="wm-map-spine">
+    {stages.map((stage, index) => (
+      <li>
+        <a href={`#${stage.chapter}`}>
+          <span class="wm-map-index">{index + 1}</span>
+          <strong>{stage.title}</strong>
+          <small>{stage.note}</small>
+        </a>
+        <span class="wm-map-jump" aria-hidden="true">↓</span>
+      </li>
+    ))}
+  </ol>
+  <p class="wm-map-caption">From here, the questions branch.</p>
+  <div class="wm-map-branches">
+    {branches.map(branch => (
+      <a href={`#${branch.chapter}`}><strong>{branch.title}</strong><small>{branch.note}</small></a>
+    ))}
+  </div>
+  <a class="wm-map-destination" href="#evaluation">
+    <span aria-hidden="true">↓</span><strong>Make predictions useful for decisions.</strong>
+    <small>Embodiment · uncertainty · causal evidence · evaluation</small>
+  </a>
+</div>

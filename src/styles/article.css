@@ -1,0 +1,51 @@
+.article-meta { display: flex; flex-wrap: wrap; gap: 0.6rem; color: var(--warm); font-size: 1rem; margin-bottom: 1rem; }
+.article-hero { margin: 2rem 0 2.5rem; }
+.article-hero img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.article-hero figcaption, .world-figure figcaption { color: var(--muted); font-size: 1rem; line-height: 1.5; margin-top: 0.8rem; }
+.article-contents { margin-block: 2.5rem; padding-block: 1.25rem; border-block: 1px solid var(--rule); font-size: 1.12rem; }
+.article-contents ol { margin-bottom: 0; }
+.learning-note { padding: 1.25rem 1.5rem; background: var(--surface); border-left: 2px solid var(--rule); font-size: 1.12rem; margin-block: 2rem; }
+.learning-note p { margin-top: 0.5rem; }
+.equation { margin-block: 1.8rem; padding: 1rem; text-align: center; background: var(--surface); overflow-x: auto; font-size: 1.18rem; }
+.article-table-scroll { overflow-x: auto; margin-block: 2rem; }
+.article-table-scroll table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 1.08rem; line-height: 1.5; }
+.article-table-scroll th, .article-table-scroll td { text-align: left; padding: 0.8rem; vertical-align: top; border-bottom: 1px solid var(--rule); }
+.article-table-scroll th { font-weight: 550; }
+.world-figure { margin: 2rem 0 2.5rem; }
+.world-diagram-scroll { max-width: 100%; overflow-x: auto; border: 1px solid var(--rule); border-radius: 3px; }
+.world-diagram-scroll img, .world-interactive-svg { display: block; width: 100%; min-width: 580px; height: auto; }
+.world-controls { padding: 1rem 1.15rem; background: var(--surface); border: 1px solid var(--rule); border-top: 0; border-radius: 0 0 3px 3px; font-size: 1rem; }
+.world-actions { display: flex; gap: 0.65rem; flex-wrap: wrap; margin-top: 1rem; }
+.world-button { min-width: 76px; min-height: 44px; padding: 0.3rem 0.8rem; background: var(--paper); color: var(--link); border: 1px solid var(--link); border-radius: 3px; cursor: pointer; transition: background-color 160ms ease; }
+.world-button:hover { background: var(--surface); }
+.world-button:disabled { color: var(--muted); border-color: var(--muted); opacity: 0.65; cursor: default; }
+.world-live { display: block; min-height: 4.5em; margin-top: 0.5rem; line-height: 1.5; }
+.world-field { display: flex; flex-direction: column; gap: 0.4rem; font-size: 1rem; line-height: 1.5; }
+.world-select { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; min-height: 44px; max-width: 100%; padding: 0.5rem; }
+.world-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.world-field input[type='range'] { width: 100%; min-width: 0; min-height: 44px; accent-color: var(--link); }
+.prose .world-scores { list-style: none; padding: 0; margin-block: 1rem; color: var(--muted); font-size: 0.98rem; }
+.world-scores [data-selected='true'] { color: var(--ink); font-weight: 550; }
+.world-scores [data-selected='true']::before { content: 'Selected: '; }
+.world-motion-note { color: var(--muted); font-size: 0.95rem; margin-top: 0.75rem; }
+.world-controls [hidden] { display: none !important; }
+#wm-plan-agent { transition: transform 240ms ease; }
+.wm-stage .wm-panel { transition: stroke 200ms ease, stroke-width 200ms ease; }
+.learning-check { padding: 1rem 0; margin-top: 1.5rem; border-block: 1px solid var(--rule); font-size: 1.15rem; }
+.learning-check summary { cursor: pointer; min-height: 44px; color: var(--link); }
+.learning-check p { margin-top: 1rem; }
+@media (max-width: 540px) {
+  .world-fields { grid-template-columns: 1fr; }
+  .learning-note { padding: 1rem; }
+  .world-controls { padding: 1rem; }
+  .article-contents a { display: inline-block; padding-block: 0.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #wm-plan-agent, .wm-stage .wm-panel, .world-button { transition: none; }
+}
+@media print {
+  .world-actions, .world-field, .world-motion-note { display: none; }
+  .world-diagram-scroll img, .world-interactive-svg { min-width: 0; }
+  .article-table-scroll table { min-width: 0; }
+  .learning-check p { display: block; }
+}

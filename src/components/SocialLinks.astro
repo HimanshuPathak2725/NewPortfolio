@@ -1,0 +1,11 @@
+---
+import { socials } from '../data/portfolio';
+---
+<div class="social-links" aria-label="Social and contact links">
+  {socials.map((social, index) => (
+    <>
+      {index > 0 && <span class="separator" aria-hidden="true">/</span>}
+      <a href={social.href}>{social.label}</a>
+    </>
+  ))}
+</div>

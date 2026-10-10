@@ -1,0 +1,26 @@
+{
+  "name": "himanshu-pathak-portfolio",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "figures:world-models": "node scripts/generate-world-model-figures.mjs && node scripts/generate-architecture-figures.mjs",
+    "verify:world-models": "node scripts/verify-world-models.mjs && node scripts/verify-world-model-animations.mjs && node scripts/verify-world-model-architectures.mjs",
+    "figures:essays": "node scripts/prepare-reward-study.mjs && node scripts/prepare-learning-studies.mjs && node scripts/generate-essay-figures.mjs",
+    "verify:essays": "python3 scripts/verify-reward-study.py && python3 scripts/verify-learning-studies.py && node scripts/verify-essays.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.13.0"
+  },
+  "devDependencies": {
+    "@fontsource-variable/inter": "^5.2.5",
+    "@fontsource-variable/newsreader": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.2.5",
+    "@tailwindcss/vite": "^4.1.11",
+    "tailwindcss": "^4.1.11"
+  }
+}

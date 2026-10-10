@@ -1,0 +1,11 @@
+---
+import {projects} from '../../data/world-models';
+---
+<ol class="wm-project-ladder">
+  {projects.map(project=><li>
+    <span class="wm-project-number" aria-hidden="true">{project.number}</span>
+    <div><h3>{project.title}</h3><p>{project.build}</p>
+      <dl><div><dt>Produce</dt><dd>{project.artifact}</dd></div><div><dt>Test</dt><dd>{project.check}</dd></div></dl>
+    </div>
+  </li>)}
+</ol>

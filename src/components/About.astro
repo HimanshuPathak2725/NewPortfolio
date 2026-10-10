@@ -1,0 +1,57 @@
+---
+import SocialLinks from './SocialLinks.astro';
+---
+<section id="about" aria-labelledby="intro-title">
+  <div class="intro-text">
+  <h1 id="intro-title">Hi, I’m Himanshu Pathak.</h1>
+  <div class="intro-copy">
+    <p>
+      I am a <strong>Reinforcement Learning research intern</strong> working on
+      sequential decision-making: training agents that learn from reward signals,
+      and studying why they behave the way they do.
+    </p>
+    <p>
+      My current interests span policy gradient methods, exploration strategies,
+      and applying RL ideas to language model post-training. I share models and
+      experiments on <a href="https://huggingface.co/HimanshuPathak">Hugging Face</a>
+      and open-source my code on <a href="https://github.com/HimanshuPathak2725">GitHub</a>.
+    </p>
+  </div>
+  <SocialLinks />
+  </div>
+  <img
+    class="intro-portrait"
+    src="/images/image.png"
+    alt="Portrait of Himanshu Pathak"
+    width="800"
+    height="800"
+    loading="eager"
+    decoding="async"
+  />
+</section>
+
+<style>
+  #about {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(240px, 28vw, 320px);
+    align-items: start;
+    gap: clamp(2rem, 4vw, 4rem);
+  }
+  .intro-text { min-width: 0; }
+  .intro-portrait {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: 0.25rem;
+    border-radius: 3px;
+  }
+  @media (max-width: 760px) {
+    #about { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .intro-portrait {
+      grid-row: 1;
+      justify-self: end;
+      width: min(220px, 70%);
+      margin: 0;
+    }
+  }
+</style>

@@ -1,0 +1,20 @@
+---
+import type {LabKind} from '../../data/world-models';
+import {animationNotes,renderAnimationFrame} from '../../lib/world-models/animated-figures';
+interface Props {kind:LabKind;}
+const {kind}=Astro.props;
+const note=animationNotes[kind],frame=renderAnimationFrame(kind,1);
+const number=['belief','learning','posterior','planning','uncertainty'].indexOf(kind)+1;
+---
+<figure class="wm-animation" id={`experiment-${kind}`} data-animated-figure={kind}>
+  <svg class="wm-motion-svg" viewBox={`0 0 ${frame.width} ${frame.height}`} role="img" aria-labelledby={`motion-title-${kind} motion-desc-${kind}`}>
+    <title id={`motion-title-${kind}`}>Figure {number}: {note.caption}</title>
+    <desc id={`motion-desc-${kind}`}>{note.description}</desc>
+    <g data-motion-scene set:html={frame.markup}/>
+  </svg>
+  <div class="wm-animation-controls" hidden>
+    <button type="button" data-motion-toggle aria-label={`Play animation ${number}`}>Replay ↻</button>
+    <span data-motion-phase>{frame.phase}</span>
+  </div>
+  <figcaption><span>Fig. {String(number).padStart(2,'0')}.</span> {note.caption}</figcaption>
+</figure>

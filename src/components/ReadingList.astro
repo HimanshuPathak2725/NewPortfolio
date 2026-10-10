@@ -1,0 +1,17 @@
+---
+import { readingList } from '../data/portfolio';
+interface Props { preview?: boolean; }
+const { preview = false } = Astro.props;
+---
+<section id="reading-list" aria-labelledby="reading-title">
+  {preview && <div class="section-heading"><h2 id="reading-title">Reading List</h2><a href="/reading-list/">All resources →</a></div>}
+  <ul class="entry-list">
+    {readingList.map((item) => (
+      <li>
+        <a class="entry-title" href={item.href}>{item.title}</a>
+        <span class="entry-meta">{item.author}</span>
+        <p class="entry-description">{item.description}</p>
+      </li>
+    ))}
+  </ul>
+</section>

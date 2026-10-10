@@ -1,0 +1,73 @@
+---
+import type {CollectionEntry} from 'astro:content';
+import {createMarkdownProcessor} from '@astrojs/markdown-remark';
+import '@fontsource-variable/inter';
+import {chapters,resources,families,projects,labs,type LabKind} from '../../data/world-models';
+import AnimatedFigure from './AnimatedFigure.astro';
+import statePortrait from '../../../public/images/world-models/state-space-v2.svg?raw';
+import rssmFigure from '../../../public/images/world-models/rssm-architecture-v2.svg?raw';
+import ArchitectureAtlas from './ArchitectureAtlas.astro';
+import {architectureScenes} from '../../lib/world-models/architecture-scenes';
+import LearningMap from './LearningMap.astro';
+import BuildRoadmap from './BuildRoadmap.astro';
+import '../../styles/world-models-hub.css';
+import '../../styles/world-models-animation.css';
+interface Props {post: CollectionEntry<'blog'>;}
+const {post}=Astro.props;
+const processor=await createMarkdownProcessor({syntaxHighlight:'prism'});
+const raw=(post.body??'').split(/<!-- hub:(\w+) -->/g);
+const parts=await Promise.all(raw.map(async(value,index)=>index%2?{kind:value,html:''}:{kind:'prose',html:(await processor.render(value)).code}));
+const extraText=[
+  ...Object.values(architectureScenes).flatMap(scenes=>scenes.flatMap(scene=>[scene.title,scene.intro,...scene.steps,scene.footnote])),
+  ...families.flatMap(family=>[family.state,family.predicts,family.actions,family.discards,family.uses,family.test]),
+  ...projects.flatMap(project=>[project.title,project.build,project.artifact,project.check]),
+  ...resources.flatMap(resource=>[resource.title,resource.purpose]),
+  ...Object.values(labs).flatMap(lab=>[lab.title,lab.question,lab.caption]),
+].join(' ');
+const readingMinutes=Math.ceil(((post.body??'').replace(/<[^>]*>/g,'')+' '+extraText).split(/\s+/).length/200);
+const groups=[...new Set(resources.map(resource=>resource.group))];
+---
+<article class="wm-hub" data-world-models-hub>
+  <div class="wm-breadcrumb"><a href="/posts/">Writing</a><span aria-hidden="true">/</span><span>World models</span></div>
+  <header class="wm-hub-hero">
+    <div class="wm-hero-copy">
+      <span class="wm-eyebrow"><span class="wm-edition-dot" aria-hidden="true"/> Research notes · October 2026</span>
+      <h1>The World<br/><em>Models Today.</em></h1>
+      <p class="wm-hero-deck">What does a model need to know<br/>before an agent can act?</p>
+      <p class="wm-hero-description">From a moving particle to latent imagination: how different world models represent state, predict change, and use those predictions to choose an action.</p>
+      <div class="wm-hero-meta"><span>By Himanshu Pathak</span><span>~{readingMinutes} min read · animated figures</span><time datetime="2026-10-10">Updated Oct 10, 2026</time></div>
+      <a class="wm-start" href="#foundations">Read the essay <span aria-hidden="true">↓</span></a>
+    </div>
+    <figure class="wm-hero-figure">
+      <div class="wm-static-figure" set:html={statePortrait}/>
+      <figcaption><span>FIG. 00</span> One state, three actions. Each curve is a computed future in a spring system.</figcaption>
+    </figure>
+  </header>
+
+  <div class="wm-hub-grid">
+    <aside class="wm-rail">
+      <div class="wm-rail-inner">
+        <p class="wm-eyebrow">In this article</p>
+        <nav aria-label="Article sections">{chapters.map(chapter=><a href={`#${chapter.id}`} data-chapter-link={chapter.id}><span>{chapter.number}</span>{chapter.short}</a>)}<a href="#resource-library" data-chapter-link="resource-library"><span>↗</span>Resource library</a></nav>
+
+        <a class="wm-rail-source" href="https://arxiv.org/abs/2609.16697">Plausible → controllable<br/>→ actionable ↗</a>
+      </div>
+    </aside>
+    <div class="wm-main-column">
+      <div class="wm-orientation"><p>A single image of a ball leaves something unresolved: which way is it moving? Add another frame and the answer changes. Add an action, and prediction becomes a question about consequences.</p><p>That small example runs through this article. It connects state estimation to learned dynamics, then to the representations and planning methods used in current world-model research.</p></div>
+      <details class="wm-optional-map"><summary>A map of the ideas in this article</summary><LearningMap /></details>
+      {parts.map(part=>part.kind==='prose'?<div class="wm-prose prose" set:html={part.html}/>:part.kind==='rssm'?<figure class="wm-inline-diagram"><div class="wm-static-figure" set:html={rssmFigure}/><figcaption>Predictive and observation-conditioned information paths. Paper-specific distributions and training objectives differ.</figcaption></figure>:part.kind==='atlas'?<ArchitectureAtlas/>:part.kind==='projects'?<details class="wm-optional-map"><summary>Ten implementation ideas, with suggested checks</summary><BuildRoadmap/></details>:<AnimatedFigure kind={part.kind as LabKind}/>)}
+      <section id="resource-library" class="wm-resource-library" aria-labelledby="wm-library-title">
+        <span class="wm-eyebrow">References</span><h2 id="wm-library-title">Further reading.</h2>
+        <p>Books and courses covering the mathematics, reinforcement learning, and control used above.</p>
+        <div class="wm-resource-filters" hidden aria-label="Filter learning resources"><button type="button" data-resource-filter="all" aria-pressed="true">All resources</button>{groups.map(group=><button type="button" data-resource-filter={group} aria-pressed="false">{group}</button>)}</div>
+        <ul>{resources.map(resource=><li data-resource-group={resource.group}><span class="wm-resource-category">{resource.group}</span><a href={resource.href}>{resource.title} <span aria-hidden="true">↗</span></a><span class="wm-resource-author">{resource.author}</span><p>{resource.purpose}</p></li>)}</ul>
+      </section>
+      <div class="wm-guide-end"><a href="/posts/">← Back to writing</a><a href="#main-content">Back to the top ↑</a></div>
+    </div>
+  </div>
+</article>
+<script>
+  import {initLearningHub} from '../../lib/world-models/hub';
+  initLearningHub();
+</script>

@@ -1,0 +1,60 @@
+/* Transparent, typeset scientific illustrations; the article supplies the paper. */
+.wm-animation { margin: 2.5rem 0 3rem; padding: 0; border: 0; background: none; box-shadow: none; }
+.wm-motion-svg { display: block; width: 100%; height: auto; overflow: visible; color: var(--wm-ink); }
+.wm-motion-svg text { font: 16px 'Inter Variable',system-ui,sans-serif; fill: var(--wm-muted); }
+.wm-motion-svg .panel-title { font: 24px 'Newsreader Variable',Georgia,serif; fill: var(--wm-ink); }
+.wm-motion-svg .formula, .wm-motion-svg .formula-blue, .wm-motion-svg .formula-orange, .wm-motion-svg .formula-green { font: italic 23px 'Newsreader Variable',Georgia,serif; fill: var(--wm-ink); }
+.wm-motion-svg .formula-blue { fill: var(--wm-blue); }
+.wm-motion-svg .formula-orange { fill: var(--wm-orange); }
+.wm-motion-svg .formula-green { fill: var(--wm-green); }
+.wm-motion-svg path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.wm-motion-svg marker path { fill: currentColor; stroke: none; }
+.wm-motion-svg .hairline { stroke: var(--wm-line); stroke-width: 1; }
+.wm-motion-svg .stroke-blue, .wm-motion-svg .stroke-green, .wm-motion-svg .stroke-orange { stroke-width: 2.8; }
+.wm-motion-svg .stroke-blue { stroke: var(--wm-blue); }
+.wm-motion-svg .stroke-green { stroke: var(--wm-green); }
+.wm-motion-svg .stroke-orange { stroke: var(--wm-orange); }
+.wm-motion-svg .body-blue { fill: var(--wm-blue); }
+.wm-motion-svg .body-green { fill: var(--wm-green); }
+.wm-motion-svg .body-orange { fill: var(--wm-orange); }
+.wm-motion-svg .body-ink { fill: var(--wm-ink); }
+.wm-motion-svg .halo { fill: var(--wm-ink); opacity: .07; }
+.wm-motion-svg .halo-blue { fill: var(--wm-blue); opacity: .09; }
+.wm-motion-svg .halo-orange { fill: var(--wm-orange); opacity: .09; }
+.wm-motion-svg .outline-ink, .wm-motion-svg .outline-blue, .wm-motion-svg .outline-green { fill: none; stroke: var(--wm-ink); stroke-width: 1.5; }
+.wm-motion-svg .outline-blue { stroke: var(--wm-blue); }
+.wm-motion-svg .outline-green { stroke: var(--wm-green); }
+.wm-motion-svg .wall { stroke: var(--wm-muted); stroke-width: 3; }
+.wm-motion-svg .coil { stroke: currentColor; stroke-width: 1.8; }
+.wm-motion-svg .spring-orange { color: var(--wm-orange); }
+.wm-motion-svg .spring-green { color: var(--wm-green); }
+.wm-motion-svg .reference-mass { stroke: var(--wm-ink); stroke-width: 1.6; stroke-dasharray: 3 3; fill: none; }
+.wm-motion-svg .reference-path { stroke: var(--wm-ink); stroke-width: 1.8; stroke-dasharray: 2 5; opacity: .55; }
+.wm-motion-svg .likelihood { stroke: var(--wm-orange); stroke-width: 2; stroke-dasharray: 5 5; }
+.wm-motion-svg .density-fill { fill: var(--wm-green); opacity: .1; }
+.wm-motion-svg .mean-line { stroke: var(--wm-green); stroke-width: 1; stroke-dasharray: 3 5; opacity: .55; }
+.wm-motion-svg .floor-dot { fill: var(--wm-muted); opacity: .2; }
+.wm-motion-svg .hatch { stroke: var(--wm-orange); stroke-width: .8; opacity: .2; }
+.wm-motion-svg .obstacle, .wm-motion-svg .obstacle-unknown { fill: none; stroke: var(--wm-orange); stroke-width: 1.5; }
+.wm-motion-svg .obstacle-unknown { stroke-dasharray: 4 5; }
+.wm-motion-svg .obstacle-hatch { stroke: none; }
+.wm-motion-svg .goal-ring { fill: none; stroke: var(--wm-green); stroke-width: 1.4; }
+.wm-motion-svg .candidate { stroke: var(--wm-blue); stroke-width: 1.2; }
+.wm-motion-svg .planned-route { stroke: var(--wm-green); stroke-width: 2.5; stroke-dasharray: 5 5; }
+.wm-motion-svg .actual-route { stroke: var(--wm-ink); stroke-width: 2.5; }
+.wm-motion-svg .error-link { stroke: var(--wm-orange); stroke-width: 1.5; stroke-dasharray: 2 4; }
+.wm-motion-svg .fan-fill { fill: var(--wm-blue); opacity: .1; }
+.wm-motion-svg .ensemble-path { stroke: var(--wm-blue); stroke-width: 1.1; opacity: .45; }
+.wm-motion-svg .observation-line { stroke: var(--wm-green); stroke-width: 1; stroke-dasharray: 2 6; opacity: .25; }
+.wm-animation-controls { display: flex; align-items: baseline; gap: 1.25rem; margin: .15rem 0 .7rem; font: .78rem/1.6 var(--font-sans); }
+.wm-animation-controls button { flex-shrink: 0; border: 0; border-radius: 0; background: none; padding: .4rem 0; min-height: 44px; color: var(--wm-green); cursor: pointer; font: inherit; text-decoration: underline; text-underline-offset: 4px; }
+.wm-animation-controls button:focus-visible { outline: 2px solid var(--wm-green); outline-offset: 4px; }
+.wm-animation-controls > span { color: var(--wm-muted); }
+.wm-animation figcaption { max-width: 740px; color: var(--wm-muted); font: .8rem/1.65 var(--font-sans); }
+.wm-animation figcaption > span { color: var(--wm-ink); }
+@media (max-width:540px) { .wm-animation-controls { align-items: flex-start; gap: 1rem; } .wm-animation-controls > span { padding-top: .6rem; } }
+@media print { .wm-animation-controls { display: none; } .wm-animation { break-inside: avoid; } }
+.wm-motion-svg .formula-small { font: italic 20px 'Newsreader Variable',Georgia,serif; fill: var(--wm-ink); }
+.wm-motion-svg .note-green { fill: var(--wm-green); }
+.wm-motion-svg .note-orange { fill: var(--wm-orange); }
+.wm-motion-svg .search-route { stroke: var(--wm-green); stroke-width: 2.5; }

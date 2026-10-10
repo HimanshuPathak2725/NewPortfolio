@@ -1,0 +1,96 @@
+---
+import consequence from '../../public/images/research/consequence.svg?raw';
+import symbols from '../../public/images/research/symbols.svg?raw';
+import knowing from '../../public/images/research/knowing.svg?raw';
+import world from '../../public/images/projects/working-systems.svg?raw';
+
+export type IllustrationKind = 'consequence' | 'symbols' | 'knowing' | 'world';
+interface Props { kind: IllustrationKind; }
+const { kind } = Astro.props;
+const illustrations = {
+  consequence: { svg: consequence, caption: 'An execution-feedback sketch; not a measured training curve.' },
+  symbols: { svg: symbols, caption: 'A fictional example using the Phone Number task’s validation rules.' },
+  knowing: { svg: knowing, caption: 'A reasoning sketch: one counterexample can undo a conjecture.' },
+  world: { svg: world, caption: 'Experiments in learning, observation, and trust.' },
+};
+const illustration = illustrations[kind];
+---
+<figure class:list={['research-illustration', { 'world-illustration': kind === 'world' }]} data-research-illustration>
+  <div class="research-drawing" set:html={illustration.svg} />
+  <figcaption>
+    {illustration.caption}
+    {kind === 'world' && <a class="full-illustration" href="/images/projects/working-systems.svg">Explore the drawing ↗</a>}
+    <button type="button" class="motion-control" aria-label={`Pause ${kind} illustration animation`} hidden>Pause animation</button>
+  </figcaption>
+</figure>
+
+<style>
+  .research-illustration { width: 100%; max-width: 350px; margin: 0; }
+  .world-illustration { max-width: 440px; }
+  .world-illustration figcaption { max-width: 36ch; }
+  .full-illustration { display: block; margin-top: 0.5rem; font-size: 0.9rem; }
+  .research-drawing :global(svg) { display: block; width: 100%; height: auto; overflow: visible; }
+  figcaption { max-width: 32ch; margin: 0.4rem auto 0; color: var(--muted); font-size: 0.9rem; line-height: 1.45; font-style: italic; }
+  .motion-control { display: block; border: 0; background: none; padding: 0.45rem 0; color: var(--link); font-size: 0.85rem; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .motion-control[hidden] { display: none; }
+  :global(.dark) .research-drawing :global(svg) { color: #d9d0c7; }
+  :global(.dark) .research-drawing :global(.blue) { color: #9bacdf; }
+  :global(.dark) .research-drawing :global(.green) { color: #7dbdab; }
+  :global(.dark) .research-drawing :global(.red) { color: #e59989; }
+  :global(.dark) .research-drawing :global(.gold) { color: #dbb664; }
+  :global(.dark) .research-drawing :global(.purple) { color: #bb9fce; }
+  :global(.dark) .research-drawing :global(.paper) { fill: #2b2925; }
+  :global(.dark) .research-drawing :global(.pw-label) { fill: #b8c8bb; }
+  .research-drawing :global(.ri-trace) { stroke-dasharray: 480; animation: trace-ink 9s ease-in-out infinite; }
+  .research-drawing :global(.ri-pulse) { animation: ink-pulse 9s ease-in-out infinite; }
+  .research-drawing :global(.ri-delay) { animation-delay: 2s; }
+  .research-drawing :global(.ri-drift) { animation: separate-symbols 9s ease-in-out infinite; }
+  .research-drawing :global(.ri-lens) { animation: examine 12s ease-in-out infinite; }
+  .research-drawing :global(.pw-river-light) { animation: transaction-flow 12s linear infinite; animation-play-state: paused; }
+  .research-drawing :global(.pw-work-light) { animation: revision-flow 18s linear infinite; animation-play-state: paused; }
+  .research-drawing :global(.pw-telescope) { animation: observe-world 16s ease-in-out infinite; animation-play-state: paused; }
+  [data-running] .research-drawing :global(.pw-river-light),
+  [data-running] .research-drawing :global(.pw-work-light),
+  [data-running] .research-drawing :global(.pw-telescope) { animation-play-state: running; }
+  .research-drawing :global(.ri-trace), .research-drawing :global(.ri-pulse),
+  .research-drawing :global(.ri-drift), .research-drawing :global(.ri-lens) { animation-play-state: paused; }
+  [data-running] .research-drawing :global(.ri-trace), [data-running] .research-drawing :global(.ri-pulse),
+  [data-running] .research-drawing :global(.ri-drift), [data-running] .research-drawing :global(.ri-lens) { animation-play-state: running; }
+  @keyframes trace-ink { 0%, 10% { stroke-dashoffset: 480; } 45%, 90% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -480; } }
+  @keyframes ink-pulse { 0%, 20%, 80%, 100% { opacity: .45; } 40%, 60% { opacity: 1; } }
+  @keyframes separate-symbols { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+  @keyframes examine { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-4px, 3px); } }
+  @keyframes transaction-flow { to { stroke-dashoffset: -172; } }
+  @keyframes revision-flow { to { stroke-dashoffset: -228; } }
+  @keyframes observe-world { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-7deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .research-drawing :global(*) { animation: none !important; }
+  }
+  @media print {
+    .research-drawing :global(*) { animation: none !important; }
+    .motion-control { display: none; }
+  }
+</style>
+
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll<HTMLElement>('[data-research-illustration]').forEach((figure) => {
+    const button = figure.querySelector<HTMLButtonElement>('button');
+    if (!button) return;
+    let visible = false;
+    let paused = false;
+    const label = button.getAttribute('aria-label')?.replace(/^Pause /, '') ?? 'illustration animation';
+    const sync = () => {
+      figure.toggleAttribute('data-running', visible && !paused && !reducedMotion.matches && !document.hidden);
+      button.hidden = reducedMotion.matches;
+      button.textContent = paused ? 'Play animation' : 'Pause animation';
+      button.setAttribute('aria-label', `${paused ? 'Play' : 'Pause'} ${label}`);
+    };
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }, { threshold: 0.15 });
+    observer.observe(figure);
+    button.addEventListener('click', () => { paused = !paused; sync(); });
+    reducedMotion.addEventListener('change', sync);
+    document.addEventListener('visibilitychange', sync);
+    sync();
+  });
+</script>

@@ -1,0 +1,40 @@
+---
+import {families} from '../../data/world-models';
+import ArchitectureDiagram from './ArchitectureDiagram.astro';
+import type {ArchitectureId} from '../../lib/world-models/architecture-diagrams';
+const notes:Record<string,string[]>={
+ dreamer:[
+  'PlaNet and Dreamer combine recurrent memory with a stochastic latent state. The representation has to carry enough of the observation history to predict transitions and task signals when new images are unavailable.',
+  'Their use of imagination differs. PlaNet searches over action sequences in latent space. Dreamer uses imagined trajectories to train an actor and critic. A good reconstruction is useful training evidence, but the eventual test is behavior in the environment.',
+ ],
+ planning:[
+  'MuZero learns a representation whose transitions support reward, policy, and value prediction. Tree search uses those quantities to compare possible actions. Reconstructing the full observation is unnecessary for that planning procedure.',
+  'TD-MPC2 also learns a task-oriented latent model, but uses local trajectory optimization and value estimates for continuous control. Grouping it with MuZero highlights their task-oriented objectives; their search procedures and training algorithms differ.',
+ ],
+ tokens:[
+  'IRIS turns images into discrete visual tokens and models their evolution with an autoregressive Transformer. Actions enter the sequence, so the predicted continuation depends on the agent’s choices.',
+  'The tokenizer determines which visual distinctions the temporal model can retain. The resulting imagined experience trains an actor-critic. Token prediction error and real-environment return measure different parts of that system.',
+ ],
+ jepa:[
+  'JEPA-style models predict learned representations of masked or future content. Pixel reconstruction is not the training target. This shifts attention toward which information the representation preserves and which downstream tasks can use it.',
+  'An action interface depends on the variant. V-JEPA 2-AC explicitly adds action-conditioned prediction for robot planning; a generic representation checkpoint does not imply the same capability.',
+ ],
+ video:[
+  'Genie generates visual continuations that respond to actions. The original system learns latent actions from video; later releases develop interactive generated environments. A compressed visual history supplies the context for those continuations.',
+  'The visual output exposes both the appeal and the difficulty of this approach. A scene can look convincing while forgetting an object or changing its mechanics. Persistence, action sensitivity, and downstream usefulness require separate evaluation.',
+ ],
+ embodied:[
+  'Physical systems make the action interface specific: actuator commands, sensory delays, contacts, and the body’s own geometry affect the transition. DayDreamer studies world-model learning on real robots.',
+  'Cosmos covers several model-specific workflows around world generation, transformation, and reasoning. Comparing embodied systems requires stating which sensors and actions are available, how much real interaction they use, and where the resulting behavior is evaluated.',
+ ],
+};
+---
+<div class="wm-architecture-notes">
+  {families.map(family => <section class="wm-family-essay" id={`family-${family.id}`} data-family-panel={family.id} aria-labelledby={`family-title-${family.id}`}>
+    <h3 id={`family-title-${family.id}`}>{family.name}</h3>
+    <p>{notes[family.id][0]}</p>
+    <ArchitectureDiagram kind={family.id as ArchitectureId}/>
+    <p>{notes[family.id][1]}</p>
+    <p class="wm-paper-links">{family.links.map(link=><a href={link.href}>{link.title} ↗</a>)}</p>
+  </section>)}
+</div>

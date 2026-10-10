@@ -1,0 +1,22 @@
+<svg class="research-art" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350" role="img" aria-labelledby="consequence-title consequence-desc"><title id="consequence-title">Learning from consequence</title><desc id="consequence-desc">An ink sketch of code attempts branching toward tests. A failed attempt receives feedback and a revised attempt passes. This is a conceptual illustration, not a measured training trajectory.</desc><style>.research-art{--ri-ink:#454354;--ri-blue:#5268ac;--ri-green:#368778;--ri-red:#bf675b;--ri-gold:#c89636;--ri-purple:#9672aa;--ri-page:#faf2df;color:#454354}.research-art .ink{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.research-art .fine{stroke-width:.8}.research-art .soft{opacity:.28}.research-art .blue{color:#5268ac}.research-art .green{color:#368778}.research-art .red{color:#bf675b}.research-art .gold{color:#c89636}.research-art .purple{color:#9672aa}.research-art text{fill:currentColor;font-family:Georgia,serif;font-size:15px}.research-art .hand{font-style:italic}.research-art .small{font-size:12px;letter-spacing:.6px}.research-art .code{font-family:monospace;font-size:14px}.research-art .wash{stroke:none;opacity:.18}.research-art .paper{fill:#faf2df;stroke:currentColor;stroke-width:1.2}.research-art .dot{fill:currentColor;stroke:none}
+</style><defs><marker id="consequence-blue-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse"><path class="ink blue" d="M2 1L9 5L2 9"/></marker><marker id="consequence-red-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse"><path class="ink red" d="M2 1L9 5L2 9"/></marker><marker id="consequence-green-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto" markerUnits="userSpaceOnUse"><path class="ink green" d="M2 1L9 5L2 9"/></marker></defs>
+<path class="wash" fill="#678dd0" d="M42 121C2 48 132 13 190 59S329 33 351 110S280 219 200 194S80 209 42 121Z"/>
+<path class="wash" fill="#d6ab47" d="M165 176C204 122 357 139 364 216S264 319 180 287S120 236 165 176Z"/>
+<g class="ink soft"><path d="M37 291q36 8 72 9M44 297q30 7 58 7"/><path d="M58 47l6-8m-3 14 12-3M338 64l7 4m-6-12 2 7"/></g>
+<text x="34" y="30" class="hand blue">I. learning from consequence</text>
+<g transform="translate(38 78) rotate(-9 65 80)">
+<path class="paper" d="M9 5L111 0L128 140L18 150Z"/><path class="ink soft" d="M15 11L105 6M23 143L122 134"/>
+<text x="24" y="34" class="code blue">f(x) {</text><text x="29" y="56" class="code">try;</text><text x="29" y="77" class="code">return y;</text><text x="25" y="99" class="code blue">}</text>
+<path class="ink gold" d="M28 112l64-5M30 116l46-3"/><text x="25" y="130" class="small hand">a conjecture</text></g>
+<path class="ink blue" d="M166 143C194 135 183 91 234 83" marker-end="url(#consequence-blue-arrow)"/>
+<path class="ink red" d="M166 161C192 165 204 180 233 179" marker-end="url(#consequence-red-arrow)"/>
+<g class="ink purple soft"><path d="M156 175C180 205 194 245 229 248" stroke-dasharray="3 6"/></g>
+<g transform="translate(244 52) rotate(5)"><path class="paper" d="M0 0L92 4L89 65L-3 59Z"/><text x="12" y="23" class="small">EXECUTE</text><path class="ink blue" d="M12 34h17m7 0h24m-48 9h48"/><circle class="ink green" cx="74" cy="40" r="11"/><path class="ink green" d="m68 40 4 4 8-9"/></g>
+<g transform="translate(240 150) rotate(-4)"><path class="paper" d="M0 0L88 0L91 63L3 65Z"/><text x="12" y="23" class="small">EXECUTE</text><path class="ink red" d="M13 35h30m-30 9h22m28-9 13 13m0-13-13 13"/><text x="10" y="81" class="hand red">a useful failure</text></g>
+<path class="ink green ri-trace" d="M292 240C292 275 224 283 177 266C137 253 113 245 113 229" stroke-width="2.3" marker-end="url(#consequence-green-arrow)"/>
+
+<text x="166" y="294" class="hand green" transform="rotate(-5 166 294)">revise, then test again</text>
+<circle cx="195" cy="112" r="4" class="dot blue ri-pulse"/><circle cx="202" cy="174" r="4" class="dot red ri-pulse ri-delay"/>
+<g class="ink gold" transform="translate(350 142)"><path d="M0-13v26m-13-13h26m-22-9 18 18m0-18L-9 9"/><circle r="5"/></g>
+<text x="52" y="335" class="hand">What did the failure teach us?</text>
+</svg>
