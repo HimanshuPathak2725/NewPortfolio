@@ -16,11 +16,12 @@ interface Props {
 const {
   title = 'Himanshu Pathak — Reinforcement Learning Researcher',
   description = 'Personal portfolio of Himanshu Pathak, Reinforcement Learning research intern. Projects, models, and writing on RL.',
-  image,
+  image = '/profile_portfolio.jpg',
   wide = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const socialImageURL = new URL(image, Astro.site ?? Astro.url.origin);
 ---
 
 <!doctype html>
@@ -31,12 +32,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin)
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    {image && <meta property="og:image" content={new URL(image, canonicalURL)} />}
-    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    <meta property="og:image" content={socialImageURL} />
+    <meta property="og:image:alt" content="Himanshu Pathak portfolio preview" />
+    <meta property="og:image:type" content="image/jpeg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageURL} />
+    <meta name="twitter:image:alt" content="Himanshu Pathak portfolio preview" />
+
     <title>{title}</title>
     <script is:inline>
       const theme = (() => {
@@ -50,7 +60,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin)
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class:list={['site-shell', { 'site-shell--wide': wide }]}>
+    <div class:list={['site-shell', { 'site-shell--wide': wide }] }>
       <Header />
       <main id="main-content" class="page-main" tabindex="-1">
         <slot />
